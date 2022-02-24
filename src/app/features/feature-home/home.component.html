@@ -1,1 +1,33 @@
-<h1>home</h1>
+<div>
+    <div class="text-[22px] text-white font-medium cursor-pointer mb-4 mt-6">Thể thao</div>
+    <div class="relative">
+        <div class="flex flex-row overflow-x-auto w-full">
+            <div *ngFor="let item of SportItems" class="flex flex-col w-[25%] min-w-[25%] mr-4">
+                <img class="w-full mb-2 rounded-lg" [src]="item.thumbnailUrl" alt="" />
+                <a [href]="item.url" class="text-white hover:text-orange-500 cursor-pointer text-lg inline-block mb-4">
+                    {{ item.title }}
+                </a>
+                <div
+                    class="text-sm"
+                    [class.text-orange-500]="item.status === MovieStatusEnum.Airing"
+                    [class.text-gray-500]="item.status === MovieStatusEnum.Scheduled">
+                    {{ item.channelName }} - {{ item.estimatedAirTime }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="text-[22px] text-white font-medium cursor-pointer mb-4 mt-6">Phim chiếu rạp</div>
+    <div class="relative">
+        <div class="flex flex-row overflow-x-auto w-full">
+            <div *ngFor="let item of CinemaItems" class="flex flex-col w-[15%] min-w-[15%] mr-4">
+                <img class="w-full mb-2 rounded-lg" [src]="item.thumbnailUrl" alt="" />
+                <a [href]="item.url" class="text-white hover:text-orange-500 cursor-pointer text-lg inline-block mb-4">
+                    {{ item.title }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

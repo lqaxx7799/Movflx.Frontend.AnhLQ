@@ -1,0 +1,49 @@
+<div>
+    <div class="sm:pr-40 pt-2 mb-2 flex flex-row justify-center relative sm:justify-between items-center">
+        <div class="sm:hidden absolute top-2 left-2 text-white cursor-pointer" (click)="toggleSideBar()">
+            <fa-icon [icon]="faBars"></fa-icon>
+        </div>
+        <div class="sm:pl-4 flex flex-row items-center">
+            <a [routerLink]="['/']">
+                <img src="assets/logo-2.png" alt="" />
+            </a>
+            <div class="ml-4 cursor-pointer hidden sm:flex">
+                <img src="assets/download-app.png" alt="" />
+            </div>
+        </div>
+        <div class="hidden sm:flex sm:items-center">
+            <a class="inline-block mr-6 text-white cursor-pointer">
+                <fa-icon [icon]="faSearch"></fa-icon>
+            </a>
+            <a class="inline-block mr-2 text-white bg-orange-500 hover:bg-orange-600 rounded-xl cursor-pointer px-4 py-1.5">MUA GÓI</a>
+            <a class="inline-block text-gray-300 cursor-pointer hover:text-orange-500 px-4 py-1.5">Đăng nhập</a>
+        </div>
+    </div>
+    <div class="flex-row px-40 justify-center pt-2 hidden sm:flex">
+        <div class="text-white font-medium p-3 border-b-orange-500 border-b-4 border-b-solid cursor-pointer hover:text-orange-500">Trang chủ</div>
+        <div class="text-gray-300 font-medium p-3 cursor-pointer hover:text-orange-500">Truyền hình</div>
+        <div class="text-gray-300 font-medium p-3 cursor-pointer hover:text-orange-500">HBO GO</div>
+        <div class="text-gray-300 font-medium p-3 cursor-pointer hover:text-orange-500">Phim bộ</div>
+        <div class="text-gray-300 font-medium p-3 cursor-pointer hover:text-orange-500">Thể thao</div>
+        <div class="text-gray-300 font-medium p-3 cursor-pointer hover:text-orange-500">Anime</div>
+    </div>
+    <div
+        class="bg-white z-[10000] sm:hidden absolute top-0 left-0 h-screen w-[250px]"
+        [@openClose]="showSideBar ? 'open' : 'closed'"
+    >
+        <div class="transition-colors bg-neutral-100 text-orange-500 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">Trang chủ</div>
+        <div class="transition-colors text-neutral-900 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">Truyền hình</div>
+        <div class="transition-colors text-neutral-900 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">HBO GO</div>
+        <div class="transition-colors text-neutral-900 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">Phim bộ</div>
+        <div class="transition-colors text-neutral-900 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">Thể thao</div>
+        <div class="transition-colors text-neutral-900 text-sm cursor-pointer px-4 py-3 hover:bg-neutral-200 hover:text-orange-500">Anime</div>
+    </div>
+    <div
+        class="absolute w-screen h-screen bg-neutral-900 top-0 left-0 z-[9999]"
+        [@fade]="showSideBar ? 'in' : 'out'"
+        (@fade.start)="$event.element.style.display = 'block'"
+        (@fade.done)="$event.element.style.display = ($event.toState === 'in' ? 'block' : 'none')"
+        [class.opacity-0]="!showSideBar"
+        (click)="toggleSideBar()">
+    </div>
+</div>
